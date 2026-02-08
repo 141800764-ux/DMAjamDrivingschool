@@ -5,9 +5,6 @@
   <title>DM Ajam Driving School</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- EmailJS -->
-  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif; }
     body { background: #f4f4f4; color: #333; }
@@ -89,30 +86,38 @@
 
 <section id="booking">
   <h2>Book a Lesson</h2>
-  <form id="bookingForm">
-    <input type="text" id="booking_name" placeholder="Your Name" required />
-    <input type="email" id="booking_email" placeholder="Your Email" required />
-    <input type="tel" id="booking_phone" placeholder="Your Phone Number" required />
-    <select id="booking_lesson">
+  <form action="https://formsubmit.co/riyaad16@hotmail.com" method="POST">
+    <input type="hidden" name="_subject" value="🚗 New Booking - DM Ajam Driving School">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_template" value="table">
+
+    <input type="text" name="Name" placeholder="Your Name" required>
+    <input type="email" name="Email" placeholder="Your Email" required>
+    <input type="tel" name="Phone" placeholder="Your Phone Number" required>
+    <select name="Lesson Type" required>
       <option>Beginner Lesson</option>
       <option>Intermediate Lesson</option>
       <option>Test Preparation</option>
     </select>
-    <input type="date" id="booking_date" required />
+    <input type="date" name="Preferred Date" required>
+
     <button type="submit">Submit Booking</button>
   </form>
-  <p id="bookingStatus"></p>
 </section>
 
 <section id="contact">
   <h2>Contact Us</h2>
-  <form id="contactForm">
-    <input type="text" id="contact_name" placeholder="Your Name" required />
-    <input type="email" id="contact_email" placeholder="Your Email" required />
-    <textarea id="contact_message" placeholder="Your Message" rows="5" required></textarea>
+  <form action="https://formsubmit.co/riyaad16@hotmail.com" method="POST">
+    <input type="hidden" name="_subject" value="📩 New Contact Message - DM Ajam Driving School">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_template" value="table">
+
+    <input type="text" name="Name" placeholder="Your Name" required>
+    <input type="email" name="Email" placeholder="Your Email" required>
+    <textarea name="Message" placeholder="Your Message" rows="5" required></textarea>
+
     <button type="submit">Send Message</button>
   </form>
-  <p id="contactStatus"></p>
 </section>
 
 <footer>
@@ -120,53 +125,14 @@
 </footer>
 
 <script>
-  // Initialize EmailJS
-  emailjs.init("z601Cf8l3rqfTM7i-"); // Your Public Key
-
-  // Contact Form using its template
-  document.getElementById("contactForm").addEventListener("submit", function(e){
-    e.preventDefault();
-    const contactParams = {
-      from_name: document.getElementById("contact_name").value,
-      reply_to: document.getElementById("contact_email").value,
-      message: document.getElementById("contact_message").value
-    };
-    emailjs.send("service_oqbw941", "template_2ibhljd", contactParams)
-      .then(() => document.getElementById("contactStatus").innerText = "✅ Message sent successfully!")
-      .catch((error) => {
-        console.log("Contact Form Error:", error);
-        document.getElementById("contactStatus").innerText = "❌ Failed to send. Check console.";
-      });
-    this.reset();
-  });
-
-  // Booking Form using its template
-  document.getElementById("bookingForm").addEventListener("submit", function(e){
-    e.preventDefault();
-    const bookingParams = {
-      from_name: document.getElementById("booking_name").value,
-      reply_to: document.getElementById("booking_email").value,
-      phone: document.getElementById("booking_phone").value,
-      lesson: document.getElementById("booking_lesson").value,
-      date: document.getElementById("booking_date").value
-    };
-    emailjs.send("service_oqbw941", "template_mt74dw3", bookingParams)
-      .then(() => document.getElementById("bookingStatus").innerText = "✅ Booking submitted successfully!")
-      .catch((error) => {
-        console.log("Booking Form Error:", error);
-        document.getElementById("bookingStatus").innerText = "❌ Failed to submit booking. Check console.";
-      });
-    this.reset();
-  });
-
   // Slideshow
   let slideIndex = 0;
   const slides = document.querySelectorAll(".slide");
   function showSlides() {
     slides.forEach(s => s.style.display = "none");
     slideIndex++;
-    if(slideIndex > slides.length) slideIndex = 1;
-    slides[slideIndex-1].style.display = "block";
+    if (slideIndex > slides.length) slideIndex = 1;
+    slides[slideIndex - 1].style.display = "block";
     setTimeout(showSlides, 3000);
   }
   showSlides();
