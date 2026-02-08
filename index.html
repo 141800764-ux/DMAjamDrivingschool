@@ -123,33 +123,39 @@
   // Initialize EmailJS
   emailjs.init("z601Cf8l3rqfTM7i-"); // Your Public Key
 
-  // Contact Form using emailjs.send
+  // Contact Form using its template
   document.getElementById("contactForm").addEventListener("submit", function(e){
     e.preventDefault();
-    const params = {
+    const contactParams = {
       from_name: document.getElementById("contact_name").value,
       reply_to: document.getElementById("contact_email").value,
       message: document.getElementById("contact_message").value
     };
-    emailjs.send("service_oqbw941","template_2ibhljd", params)
+    emailjs.send("service_oqbw941", "template_2ibhljd", contactParams)
       .then(() => document.getElementById("contactStatus").innerText = "✅ Message sent successfully!")
-      .catch(() => document.getElementById("contactStatus").innerText = "❌ Failed to send. Try again.");
+      .catch((error) => {
+        console.log("Contact Form Error:", error);
+        document.getElementById("contactStatus").innerText = "❌ Failed to send. Check console.";
+      });
     this.reset();
   });
 
-  // Booking Form using emailjs.send
+  // Booking Form using its template
   document.getElementById("bookingForm").addEventListener("submit", function(e){
     e.preventDefault();
-    const params = {
+    const bookingParams = {
       from_name: document.getElementById("booking_name").value,
       reply_to: document.getElementById("booking_email").value,
       phone: document.getElementById("booking_phone").value,
       lesson: document.getElementById("booking_lesson").value,
       date: document.getElementById("booking_date").value
     };
-    emailjs.send("service_oqbw941","template_2ibhljd", params)
+    emailjs.send("service_oqbw941", "template_mt74dw3", bookingParams)
       .then(() => document.getElementById("bookingStatus").innerText = "✅ Booking submitted successfully!")
-      .catch(() => document.getElementById("bookingStatus").innerText = "❌ Failed to submit booking. Try again.");
+      .catch((error) => {
+        console.log("Booking Form Error:", error);
+        document.getElementById("bookingStatus").innerText = "❌ Failed to submit booking. Check console.";
+      });
     this.reset();
   });
 
