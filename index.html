@@ -5,141 +5,309 @@
   <title>DM Ajam Driving School</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif; }
+    * { box-sizing: border-box; font-family: Arial, sans-serif; }
     body { background: #f4f4f4; color: #333; }
+
     header { background: #111; color: #fff; padding: 15px 20px; position: sticky; top: 0; z-index: 1000; }
-    nav { display: flex; align-items: center; justify-content: space-between; max-width: 1100px; margin: auto; }
-    .logo-area { 
-        display: flex; 
-        align-items: center;
-        
-     }
-    .logo-area img { height: 50px; margin-right: 10px; }
-    nav a { color: #fff; margin: 0 8px; text-decoration: none; font-weight: bold; }
-    nav a:hover { color: gold; }
 
-    section { padding: 60px 20px; max-width: 1100px; margin: auto; }
-    .hero { background: linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.7)), url('https://images.unsplash.com/photo-1517949908114-720f3b84c8fa'); background-size: cover; color: #fff; text-align: center; padding: 100px 20px; }
+    .hero {
+      background: linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.7)),
+      url('https://images.unsplash.com/photo-1517949908114-720f3b84c8fa');
+      background-size: cover;
+      color: #fff;
+      text-align: center;
+      padding: 100px 20px;
+    }
 
-    h2 { margin-bottom: 20px; }
+    .slideshow {
+      max-width: 900px;
+      margin: 40px auto;
+      position: relative;
+    }
 
-    .slideshow { max-width: 800px; margin: 40px auto; position: relative; }
-    .slide { display: none; }
-    .slide img { width: 100%; border-radius: 10px; }
+    .slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px,1fr)); gap: 20px; }
-    .card { background: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,.1); }
+
+  .slide img {
+  width: 100%;
+  height: 420px;
+  object-fit: contain;   /* Keeps full image */
+  background: #000;
+}
+
+
+
 
     form input, form select, form textarea, form button {
       width: 100%; padding: 10px; margin: 10px 0; border-radius: 5px; border: 1px solid #ccc;
     }
 
-    form button { background: #111; color: #fff; border: none; cursor: pointer; }
-    form button:hover { background: gold; color: #000; }
+    form button {
+      background: #111; color: #fff; border: none; cursor: pointer;
+    }
 
-    footer { background: #111; color: #fff; text-align: center; padding: 20px; }
+    form button:hover {
+      background: gold; color: #000;
+    }
+
+    footer {
+      background: #111; color: #fff; text-align: center; padding: 20px;
+    }
+    .scroll-gallery {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  gap: 1rem;
+  padding-bottom: 10px;
+  scrollbar-width: thin;
+  scroll-behavior: smooth;
+}
+
+.scroll-gallery::-webkit-scrollbar {
+  height: 10px;
+}
+
+.scroll-gallery::-webkit-scrollbar-thumb {
+  background-color: rgba(0,0,0,0.3);
+  border-radius: 10px;
+}
+
+.gallery-item {
+  flex: 0 0 auto;
+  width: 300px;
+  height: 200px;
+  position: relative;
+  scroll-snap-align: center;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.gallery-item:hover {
+  transform: scale(1.05);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.lesson-list {
+  list-style: none;
+  padding: 6px;
+  margin: 0 auto;          /* centers the whole block */
+  width: fit-content;     /* shrinks to content width */
+  text-align: left;       /* keeps text nicely aligned */
+}
+
+.lesson-list li::before {
+  content: "✅ ";
+}
+
+
   </style>
 </head>
 
 <body>
 
 <header>
-  <nav>
-    <div class="logo-area">
-      <img src="images/dmlogo.jpg" alt="DM Ajam Driving School Logo" style="width: 250px;height: 150px;margin-left: -15%;">
-      <h2>DM Ajam Driving School</h2>
-    </div>
-    <div>
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#lessons">Lessons</a>
-      <a href="#booking">Booking</a>
-      <a href="#contact">Contact</a>
+  <nav class="navbar navbar-expand-lg navbar-dark" style="background:#111;">
+    <div class="container">
+
+      <!-- Logo + Name -->
+      <a class="navbar-brand d-flex align-items-center" href="#home">
+        <img src="images/dmlogo2.jpg" alt="Logo" style="height:150px; width: 250px;" class="me-2">
+        <span class="fw-bold">DM Ajam Driving School</span>
+      </a>
+
+      <!-- Mobile Toggle -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Menu Right -->
+      <div class="collapse navbar-collapse justify-content-end" id="menu">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#success">Students</a></li>
+          <li class="nav-item"><a class="nav-link" href="#lessons">Lessons</a></li>
+          <li class="nav-item"><a class="nav-link" href="#booking">Booking</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+      </div>
+
     </div>
   </nav>
 </header>
+
 
 <section class="hero" id="home">
   <h1>Learn to Drive with Confidence</h1>
   <p>Professional, Friendly & Affordable Driving Lessons</p>
 </section>
 
-<section id="about">
+<section class="container py-5" id="about">
   <h2>About Us</h2>
-  <p>DM Ajam Driving School helps learners become safe and confident drivers.</p>
+  <p>DM Ajam Driving School helps learners become safe and confident drivers.
+    Est 2018
+
+DM AJAM DRIVING SCHOOL 🚗
+
+Patient • Professional • Affordable
+Helping learners become confident, safe drivers.
+
+Code's A & B Practical Only
+
+📍Cape Town
+  </p>
 </section>
 
-<section id="success">
-  <h2>Our Successful Students</h2>
-  <div class="slideshow">
-    <div class="slide"><img src="images/pass1.jpg" alt="Student Passed 1"></div>
-    <div class="slide"><img src="images/pass2.jpg" alt="Student Passed 2"></div>
-    <div class="slide"><img src="images/pass3.jpg" alt="Student Passed 3"></div>
+<section class="container py-5" id="success">
+  <h2 class="text-center mb-4">Our Successful Students</h2>
+
+  <div class="scroll-gallery" id="autoGallery">
+    <div class="gallery-item"><img src="images/pass1.jpg" alt="Student 1" data-bs-toggle="modal" data-bs-target="#imageModal"></div>
+    <div class="gallery-item"><img src="images/pass2.jpg" alt="Student 2" data-bs-toggle="modal" data-bs-target="#imageModal"></div>
+    <div class="gallery-item"><img src="images/pass3.jpg" alt="Student 3" data-bs-toggle="modal" data-bs-target="#imageModal" ></div>
+    <div class="gallery-item"><img src="images/pass4.jpg" alt="Student 3" data-bs-toggle="modal" data-bs-target="#imageModal"></div>
+    <div class="gallery-item"><img src="images/pass5.jpg" alt="Student 3" data-bs-toggle="modal" data-bs-target="#imageModal"></div>
+    <div class="gallery-item"><img src="images/pass6.jpg" alt="Student 3" data-bs-toggle="modal" data-bs-target="#imageModal"></div>
+    <div class="gallery-item"><img src="images/pass7.jpg" alt="Student 4" data-bs-toggle="modal" data-bs-target="#imageModal"></div>
+    <div class="gallery-item"><img src="images/pass8.jpg" alt="Student 5" data-bs-toggle="modal" data-bs-target="#imageModal"></div>
+    <div class="gallery-item"><img src="images/pass6.jpg" alt="Student 6" data-bs-toggle="modal" data-bs-target="#imageModal"></div>
+    <div class="gallery-item"><img src="images/pass7.jpg" alt="Student 7"data-bs-toggle="modal" data-bs-target="#imageModal"></div>
+    <div class="gallery-item"><img src="images/pass24.jpg" alt="Student 8"data-bs-toggle="modal" data-bs-target="#imageModal"></div>
+    <div class="gallery-item"><img src="images/pass9.jpg" alt="Student 8"data-bs-toggle="modal" data-bs-target="#imageModal"></div>
+    <div class="gallery-item"><img src="images/pass10.jpg" alt="Student 8" data-bs-toggle="modal" data-bs-target="#imageModal"></div>
+    <div class="gallery-item"><img src="images/pass11.jpg" alt="Student 8" data-bs-toggle="modal" data-bs-target="#imageModal"></div>
+    <div class="gallery-item"><img src="images/pass12.jpg" alt="Student 8" data-bs-toggle="modal" data-bs-target="#imageModal"></div>
+    <div class="gallery-item"><img src="images/pass13.jpg" alt="Student 8" data-bs-toggle="modal" data-bs-target="#imageModal"></div>
+    <div class="gallery-item"><img src="images/pass14.jpg" alt="Student 8" data-bs-toggle="modal" data-bs-target="#imageModal"></div>
+    <div class="gallery-item"><img src="images/pass22.jpg" alt="Student 8" data-bs-toggle="modal" data-bs-target="#imageModal"></div>
+    <div class="gallery-item"><img src="images/pass16.jpg" alt="Student 8" data-bs-toggle="modal" data-bs-target="#imageModal"></div>
+    <div class="gallery-item"><img src="images/pass17.jpg" alt="Student 8" data-bs-toggle="modal" data-bs-target="#imageModal"></div>
+    <div class="gallery-item"><img src="images/pass18.jpg" alt="Student 8"data-bs-toggle="modal" data-bs-target="#imageModal"></div>
+    <div class="gallery-item"><img src="images/pass19.jpg" alt="Student 8"data-bs-toggle="modal" data-bs-target="#imageModal"></div>
+    <div class="gallery-item"><img src="images/pass20.jpg" alt="Student 8"data-bs-toggle="modal" data-bs-target="#imageModal"></div>
+    <div class="gallery-item"><img src="images/pass21.png" alt="Student 8" data-bs-toggle="modal" data-bs-target="#imageModal"></div>
+
   </div>
 </section>
 
-<section id="lessons">
+
+<section class="container py-5" id="lessons">
   <h2>Lessons & Prices</h2>
-  <div class="cards">
-    <div class="card"><h3>Beginner Lesson</h3><p>1 Hour</p><strong>R250</strong></div>
-    <div class="card"><h3>Intermediate Lesson</h3><p>1.5 Hours</p><strong>R350</strong></div>
-    <div class="card"><h3>Test Preparation</h3><p>2 Hours</p><strong>R450</strong></div>
-  </div>
+  <div class="row g-4">
+    <div class="col-md-4"><div class="card p-3 text-center"><h4>R250.00</h4><p>Single Lesson - 1 Hour</p></div></div>
+    <div class="col-md-4"><div class="card p-3 text-center"><h4>R1400.00</h4><p>6 x 1hr Lessons</p></div></div>
+    <div class="col-md-4"><div class="card p-3 text-center"><h4>R2350.00</h4><p>10 x 1hr Lessons</p></div></div>
+    <h2>Drivers Test Packages</h2>
+    <div class="col-md-4"><div class="card p-3 text-center"><h4>R2100.00</h4><p>6 x 1hr Lessons + Car</p></div></div>
+    <div class="col-md-4"><div class="card p-3 text-center"><h4>R3000.00</h4><p>10 x 1hr Lessons + Car</p></div></div>
+    <div class="col-md-4"><div class="card p-3 text-center"><h4>R5150.00 = Full Course</h4><p>20 x 1hr Lessons + Car</p></div></div>
+    <div class="col-md-4"><div class="card p-3 text-center"><h4>R750.00</h4><p>Car Hire</p></div></div>
+    <h4 class="lessons text-center">
+  🚘 What does a Code 8 Practical Driving Lesson include?<br><br>
+  At DM AJAM DRIVING SCHOOL, our lessons cover:
+</h4>
+
+<ul class="lesson-list">
+  <li>Vehicle control (pull off, stop, steering & gears)</li>
+  <li>Road rules, signs & safe driving habits</li>
+  <li>Mirror checks, blind spots & lane discipline</li>
+  <li>Turning, intersections & driving in traffic</li>
+  <li>Parking skills (parallel, alley docking, reverse)</li>
+  <li>Test route practice & mock tests</li>
+</ul>
+
+<p class="text-center"><h3>📲 Book your lesson today and let’s get you ready to pass 💯</h3></p>
+
+
 </section>
 
-<section id="booking">
+<section class="container py-5" id="booking">
   <h2>Book a Lesson</h2>
   <form action="https://formsubmit.co/dawoodajam@gmail.com" method="POST">
-    <input type="hidden" name="_subject" value="🚗 New Booking - DM Ajam Driving School">
     <input type="hidden" name="_captcha" value="false">
-    <input type="hidden" name="_template" value="table">
-
-    <input type="text" name="Name" placeholder="Your Name" required>
-    <input type="email" name="Email" placeholder="Your Email" required>
-    <input type="tel" name="Phone" placeholder="Your Phone Number" required>
-    <select name="Lesson Type" required>
-      <option>Beginner Lesson</option>
-      <option>Intermediate Lesson</option>
-      <option>Test Preparation</option>
+    <input class="form-control" name="Name" placeholder="Your Name" required>
+    <input class="form-control" type="email" name="Email" placeholder="Your Email" required>
+    <input class="form-control" name="Phone" placeholder="Your Phone" required>
+    <select class="form-select" name="Lesson Type">
+      <option>Beginner</option>
+      <option>Intermediate</option>
+      <option>Test Prep</option>
     </select>
-    <input type="date" name="Preferred Date" required>
-
-    <button type="submit">Submit Booking</button>
+    <input class="form-control" type="date" name="Preferred Date">
+    <button class="btn btn-dark w-100">Submit Booking</button>
   </form>
 </section>
 
-<section id="contact">
+<section class="container py-5" id="contact">
   <h2>Contact Us</h2>
   <form action="https://formsubmit.co/riyaad16@hotmail.com" method="POST">
-    <input type="hidden" name="_subject" value="📩 New Contact Message - DM Ajam Driving School">
-    <input type="hidden" name="_captcha" value="false">
-    <input type="hidden" name="_template" value="table">
-
-    <input type="text" name="Name" placeholder="Your Name" required>
-    <input type="email" name="Email" placeholder="Your Email" required>
-    <textarea name="Message" placeholder="Your Message" rows="5" required></textarea>
-
-    <button type="submit">Send Message</button>
+    <input class="form-control" name="Name" placeholder="Your Name" required>
+    <input class="form-control" type="email" name="Email" placeholder="Your Email" required>
+    <textarea class="form-control" name="Message" rows="5" placeholder="Your Message"></textarea>
+    <button class="btn btn-dark w-100">Send Message</button>
   </form>
 </section>
 
 <footer>
-  <p>© 2026 DM Ajam Driving School</p>
+  <p>© 2018 DM Ajam Driving School</p>
 </footer>
 
 <script>
-  // Slideshow
-  let slideIndex = 0;
-  const slides = document.querySelectorAll(".slide");
-  function showSlides() {
-    slides.forEach(s => s.style.display = "none");
-    slideIndex++;
-    if (slideIndex > slides.length) slideIndex = 1;
-    slides[slideIndex - 1].style.display = "block";
-    setTimeout(showSlides, 3000);
+  const gallery = document.getElementById('autoGallery');
+  const scrollStep = 320;
+  const scrollInterval = 3000;
+
+  function autoScroll() {
+    if (gallery.scrollLeft + gallery.clientWidth >= gallery.scrollWidth) {
+      gallery.scrollTo({ left: 0, behavior: 'smooth' });
+    } else {
+      gallery.scrollBy({ left: scrollStep, behavior: 'smooth' });
+    }
   }
-  showSlides();
+
+  let scrollTimer = setInterval(autoScroll, scrollInterval);
+
+  gallery.addEventListener('mouseenter', () => clearInterval(scrollTimer));
+  gallery.addEventListener('mouseleave', () => {
+    scrollTimer = setInterval(autoScroll, scrollInterval);
+  });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Modal for full-size image -->
+<div class="modal fade" id="imageModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content bg-transparent border-0">
+      <div class="modal-body p-0">
+        <img id="modalImage" src="" class="img-fluid w-100" alt="Full Image">
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  const modalImage = document.getElementById('modalImage');
+  const galleryImages = document.querySelectorAll('.gallery-item img');
+
+  galleryImages.forEach(img => {
+    img.addEventListener('click', () => {
+      modalImage.src = img.src;
+      modalImage.alt = img.alt;
+    });
+  });
 </script>
 
 </body>
