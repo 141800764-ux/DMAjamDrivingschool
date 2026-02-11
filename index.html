@@ -16,12 +16,18 @@
 
     .hero {
       background: linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.7)),
-      url('https://images.unsplash.com/photo-1517949908114-720f3b84c8fa');
+      url('images/bg1.png');
       background-size: cover;
       color: #fff;
       text-align: center;
       padding: 100px 20px;
     }
+    @media (min-width: 992px) {
+  .hero {
+    background-size: contain;
+    background-color: #000;
+  }
+}
 
     .slideshow {
       max-width: 900px;
@@ -112,8 +118,136 @@
   content: "✅ ";
 }
 
+.school-name {
+      font-size: clamp(1rem, 3vw, 1.4rem);
+      white-space: nowrap;
+    }
+    /* ===== Lesson Cards Upgrade ===== */
+.card {
+  border: 2px solid gold;
+  border-radius: 18px;
+  background: #111;
+  color: #fff;
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card h4 {
+  color: gold;
+  font-weight: bold;
+}
+
+.card:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 0 25px rgba(255, 215, 0, 0.8);
+}
+
+/* ===== Footer Upgrade ===== */
+footer {
+  background: #000;
+  color: #fff;
+  padding: 40px 20px;
+}
+
+.footer-content {
+  max-width: 1100px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+  text-align: center;
+}
+
+.footer-content h4 {
+  color: gold;
+  margin-bottom: 10px;
+}
+
+.footer-content a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.footer-content a:hover {
+  color: gold;
+}
+
+.footer-icons a {
+  font-size: 28px;
+  margin: 0 10px;
+  color: #fff;
+}
+
+.footer-icons a:hover {
+  color: gold;
+}
+
+.footer-bottom {
+  margin-top: 30px;
+  text-align: center;
+  font-size: 14px;
+  border-top: 1px solid #333;
+  padding-top: 15px;
+}
+/* ===== ORANGE THEME COLOR ===== */
+:root {
+  --brand-orange: #f57c00; /* Adjust if you want darker/lighter */
+  --brand-orange-light: #ffb74d;
+}
+
+/* ===== Lesson Cards (Orange Border) ===== */
+.card {
+  border: 2px solid var(--brand-orange);
+  border-radius: 18px;
+  background: #111;
+  color: #fff;
+  box-shadow: 0 0 15px rgba(245, 124, 0, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card h4 {
+  color: var(--brand-orange);
+  font-weight: bold;
+}
+
+.card:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 0 25px rgba(245, 124, 0, 0.8);
+}
+
+/* ===== Booking & Contact Sections (Orange Border Box) ===== */
+#booking, #contact {
+  border: 2px solid var(--brand-orange);
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(245, 124, 0, 0.4);
+  background: #fff;
+}
+
+/* Add inner spacing */
+#booking h2, #contact h2 {
+  color: var(--brand-orange);
+}
+
+#booking form, #contact form {
+  padding: 10px;
+}
+#booking {
+  margin-bottom: 60px;
+}
+button:hover,
+.btn:hover {
+  background-color: var(--brand-orange-light) !important;
+  color: #000 !important;
+}
+
+/* Links */
+a:hover {
+  color: var(--brand-orange-light);
+}
 
   </style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
 </head>
 
 <body>
@@ -124,8 +258,8 @@
 
       <!-- Logo + Name -->
       <a class="navbar-brand d-flex align-items-center" href="#home">
-        <img src="images/dmlogo2.jpg" alt="Logo" style="height:150px; width: 250px;" class="me-2">
-        <span class="fw-bold">DM Ajam Driving School</span>
+        <img src="images/dmlogo2.jpg" alt="Logo" style="height:150px; width: 250px; border-radius: 10px;" class="me-2">
+        <span class="fw-bold school-name">DM Ajam Driving School</span>
       </a>
 
       <!-- Mobile Toggle -->
@@ -242,9 +376,15 @@ Code's A & B Practical Only
     <input class="form-control" type="email" name="Email" placeholder="Your Email" required>
     <input class="form-control" name="Phone" placeholder="Your Phone" required>
     <select class="form-select" name="Lesson Type">
-      <option>Beginner</option>
-      <option>Intermediate</option>
-      <option>Test Prep</option>
+      <option>Choose Your Lessons Here:</option>
+      <option>Single Lesson 1hr = R250</option>
+      <option>6 x 1hr Lessons = R1400</option>
+      <option>10 x 1hr Lessons = R2350</option>
+      <option>Drivers Test Packages 6 x 1hr Lessons + Car = R2100</option>
+      <option>Drivers Test Packages 10 x 1hr Lessons + Car = R3000</option>
+      <option>Drivers Test Packages 20 x 1hr Lessons + Car = R5150 (Full Course)</option>
+      <option>Car Hire = R750</option>
+
     </select>
     <input class="form-control" type="date" name="Preferred Date">
     <button class="btn btn-dark w-100">Submit Booking</button>
@@ -256,14 +396,44 @@ Code's A & B Practical Only
   <form action="https://formsubmit.co/riyaad16@hotmail.com" method="POST">
     <input class="form-control" name="Name" placeholder="Your Name" required>
     <input class="form-control" type="email" name="Email" placeholder="Your Email" required>
+    <input class="form-control" name="Phone" placeholder="Your Phone" required>
     <textarea class="form-control" name="Message" rows="5" placeholder="Your Message"></textarea>
     <button class="btn btn-dark w-100">Send Message</button>
   </form>
 </section>
 
 <footer>
-  <p>© 2018 DM Ajam Driving School</p>
+  <div class="footer-content">
+
+    <div>
+      <h4>Contact Us</h4>
+      <p>📧 Email: <a href="mailto:dawoodajam@gmail.com">dawoodajam@gmail.com</a></p>
+      <p>📞 Phone: <a href="tel:06581395111">06581395111</a></p>
+    </div>
+
+    <div>
+      <h4>Follow Us</h4>
+      <div class="footer-icons">
+        <a href="https://wa.me/276581395111" target="_blank" title="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+        <a href="https://facebook.com/YOURPAGE" target="_blank" title="Facebook"><i class="bi bi-facebook"></i></a>
+        <a href="https://instagram.com/YOURPAGE" target="_blank" title="Instagram"><i class="bi bi-instagram"></i></a>
+      </div>
+    </div>
+
+    <div>
+      <h4>About</h4>
+      <p>DM Ajam Driving School</p>
+      <p>Professional • Patient • Affordable</p>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2018 DM Ajam Driving School</p>
+    <p>Designed by <a href="https://141800764-ux.github.io/MyPortfolio/ContactMe.html" target="_blank">Riyaad</a></p>
+  </div>
 </footer>
+
 
 <script>
   const gallery = document.getElementById('autoGallery');
