@@ -235,6 +235,9 @@ footer {
 #booking {
   margin-bottom: 60px;
 }
+#contact {
+  margin-bottom: 60px;  /* Space before footer */
+}
 button:hover,
 .btn:hover {
   background-color: var(--brand-orange-light) !important;
@@ -245,6 +248,30 @@ button:hover,
 a:hover {
   color: var(--brand-orange-light);
 }
+/* ===== About Images Section ===== */
+.about-images {
+  background: #111;
+  border-top: 3px solid var(--brand-orange);
+  border-bottom: 3px solid var(--brand-orange);
+  padding: 50px 0;
+}
+
+.about-images img {
+  width: 100%;
+  height: 300px;
+  object-fit: contain;
+  background: #000;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 0 20px rgba(245, 124, 0, 0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about-images img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 30px rgba(245, 124, 0, 0.8);
+}
+
 
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
@@ -286,8 +313,13 @@ a:hover {
 
 
 <section class="hero" id="home">
-  <h1>Learn to Drive with Confidence</h1>
-  <p>Professional, Friendly & Affordable Driving Lessons</p>
+  <h1>Learn to Drive with Confidence</h1><br>
+  <p>Professional, Friendly & Affordable Driving Lessons</p><br>
+  <h1 class="more words" style="text-primary">
+SSL Secured .
+Certified School .
+Certified Instructors<br><br></h1>
+<h4>With Every Difficulty Comes Ease!</h4>
 </section>
 
 <section class="container py-5" id="about">
@@ -305,6 +337,22 @@ Code's A & B Practical Only
 📍Cape Town
   </p>
 </section>
+<section class="about-images">
+  <div class="container">
+    <div class="row g-4 text-center">
+
+      <div class="col-md-6">
+        <img src="images/ssl.png" alt="Certified Driving Instructor">
+      </div>
+
+      <div class="col-md-6">
+        <img src="images/certifiedstar.png" alt="Certified Gold Seal">
+      </div>
+
+    </div>
+  </div>
+</section>
+
 
 <section class="container py-5" id="success">
   <h2 class="text-center mb-4">Our Successful Students</h2>
@@ -364,7 +412,7 @@ Code's A & B Practical Only
   <li>Test route practice & mock tests</li>
 </ul>
 
-<p class="text-center"><h3>📲 Book your lesson today and let’s get you ready to pass 💯</h3></p>
+<p class="text-center"><h3>📲 Book your lesson today and let’s get you ready to pass 1st time 💯</h3></p>
 
 
 </section>
@@ -385,12 +433,16 @@ Code's A & B Practical Only
       <option>Drivers Test Packages 10 x 1hr Lessons + Car = R3000</option>
       <option>Drivers Test Packages 20 x 1hr Lessons + Car = R5150 (Full Course)</option>
       <option>Car Hire = R750</option>
+      <option>Code A (Motorbike License) Choose this option and we will get back to you!</option>
 
     </select>
     <input class="form-control" type="date" name="Preferred Date">
     <button class="btn btn-dark w-100">Submit Booking</button>
   </form>
+  
+
 </section>
+
 
 <section class="container py-5" id="contact">
   <h2>Contact Us</h2>
@@ -431,7 +483,7 @@ Code's A & B Practical Only
 
   <div class="footer-bottom">
     <p>© 2018 DM Ajam Driving School</p>
-    <p>Designed by <a href="https://141800764-ux.github.io/MyPortfolio/ContactMe.html" target="_blank">Riyaad</a></p>
+    <p>Designed by <a href="https://141800764-ux.github.io/MyPortfolio/ContactMe.html" target="_blank">@riyaadDesigns</a></p>
   </div>
 </footer>
 
