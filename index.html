@@ -8,66 +8,86 @@
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
-  <style>
-    * { box-sizing: border-box; font-family: Arial, sans-serif; }
-    body { background: #f4f4f4; color: #333; }
+ <style>
+* { box-sizing: border-box; font-family: Arial, sans-serif; }
+body { background: #f4f4f4; color: #333; overflow-x: hidden; }
 
-    header { background: #111; color: #fff; padding: 15px 20px; position: sticky; top: 0; z-index: 1000; }
+header { background: #111; color: #fff; padding: 15px 20px; position: sticky; top: 0; z-index: 1000; }
 
-    .hero {
-      background: linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.7)),
-      url('images/bg1.png');
-      background-size: cover;
-      color: #fff;
-      text-align: center;
-      padding: 100px 20px;
-    }
-    @media (min-width: 992px) {
+/* ===== NAVBAR FIX ===== */
+.navbar-brand img {
+  max-width: 100%;
+  height: auto;
+  width: 180px;
+}
+
+/* ===== HERO ===== */
+.hero {
+  background: linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.7)),
+  url('images/bg1.png');
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+  text-align: center;
+  padding: 100px 20px;
+}
+
+@media (min-width: 992px) {
   .hero {
     background-size: contain;
     background-color: #000;
   }
 }
 
-    .slideshow {
-      max-width: 900px;
-      margin: 40px auto;
-      position: relative;
-    }
+@media (max-width: 768px) {
+  .hero {
+    padding: 60px 15px;
+  }
+}
 
-    .slide {
+/* ===== SLIDESHOW ===== */
+.slideshow {
+  max-width: 900px;
+  margin: 40px auto;
+  position: relative;
+}
+
+.slide {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-
-  .slide img {
+.slide img {
   width: 100%;
   height: 420px;
-  object-fit: contain;   /* Keeps full image */
+  object-fit: contain;
   background: #000;
 }
 
+/* ===== FORM ===== */
+form input, form select, form textarea, form button {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
 
+form button {
+  background: #111;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
 
+form button:hover {
+  background: #ffb74d;
+  color: #000;
+}
 
-    form input, form select, form textarea, form button {
-      width: 100%; padding: 10px; margin: 10px 0; border-radius: 5px; border: 1px solid #ccc;
-    }
-
-    form button {
-      background: #111; color: #fff; border: none; cursor: pointer;
-    }
-
-    form button:hover {
-      background: gold; color: #000;
-    }
-
-    footer {
-      background: #111; color: #fff; text-align: center; padding: 20px;
-    }
-    .scroll-gallery {
+/* ===== SCROLL GALLERY ===== */
+.scroll-gallery {
   display: flex;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
@@ -106,97 +126,42 @@
   height: 100%;
   object-fit: cover;
 }
+
+/* MOBILE GALLERY FIX */
+@media (max-width: 768px) {
+  .gallery-item {
+    width: 250px;
+    height: 160px;
+  }
+}
+
+/* ===== LESSON LIST ===== */
 .lesson-list {
   list-style: none;
   padding: 6px;
-  margin: 0 auto;          /* centers the whole block */
-  width: fit-content;     /* shrinks to content width */
-  text-align: left;       /* keeps text nicely aligned */
+  margin: 0 auto;
+  width: fit-content;
+  text-align: left;
 }
 
 .lesson-list li::before {
   content: "✅ ";
 }
 
+/* ===== SCHOOL NAME ===== */
 .school-name {
-      font-size: clamp(1rem, 3vw, 1.4rem);
-      white-space: normal;
+  font-size: clamp(1rem, 3vw, 1.4rem);
+  white-space: normal;
   line-height: 1.2;
-    }
-    /* ===== Lesson Cards Upgrade ===== */
-.card {
-  border: 2px solid gold;
-  border-radius: 18px;
-  background: #111;
-  color: #fff;
-  box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.card h4 {
-  color: gold;
-  font-weight: bold;
-}
-
-.card:hover {
-  transform: translateY(-6px) scale(1.03);
-  box-shadow: 0 0 25px rgba(255, 215, 0, 0.8);
-}
-
-/* ===== Footer Upgrade ===== */
-footer {
-  background: #000;
-  color: #fff;
-  padding: 40px 20px;
-}
-
-.footer-content {
-  max-width: 1100px;
-  margin: auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 20px;
-  text-align: center;
-}
-
-.footer-content h4 {
-  color: gold;
-  margin-bottom: 10px;
-}
-
-.footer-content a {
-  color: #fff;
-  text-decoration: none;
-}
-
-.footer-content a:hover {
-  color: gold;
-}
-
-.footer-icons a {
-  font-size: 28px;
-  margin: 0 10px;
-  color: #fff;
-}
-
-.footer-icons a:hover {
-  color: gold;
-}
-
-.footer-bottom {
-  margin-top: 30px;
-  text-align: center;
-  font-size: 14px;
-  border-top: 1px solid #333;
-  padding-top: 15px;
-}
-/* ===== ORANGE THEME COLOR ===== */
+/* ===== BRAND COLORS ===== */
 :root {
-  --brand-orange: #f57c00; /* Adjust if you want darker/lighter */
+  --brand-orange: #f57c00;
   --brand-orange-light: #ffb74d;
 }
 
-/* ===== Lesson Cards (Orange Border) ===== */
+/* ===== CARDS ===== */
 .card {
   border: 2px solid var(--brand-orange);
   border-radius: 18px;
@@ -216,7 +181,7 @@ footer {
   box-shadow: 0 0 25px rgba(245, 124, 0, 0.8);
 }
 
-/* ===== Booking & Contact Sections (Orange Border Box) ===== */
+/* ===== BOOKING & CONTACT ===== */
 #booking, #contact {
   border: 2px solid var(--brand-orange);
   border-radius: 20px;
@@ -224,7 +189,6 @@ footer {
   background: #fff;
 }
 
-/* Add inner spacing */
 #booking h2, #contact h2 {
   color: var(--brand-orange);
 }
@@ -232,23 +196,21 @@ footer {
 #booking form, #contact form {
   padding: 10px;
 }
-#booking {
-  margin-bottom: 60px;
-}
-#contact {
-  margin-bottom: 60px;  /* Space before footer */
-}
+
+#booking { margin-bottom: 60px; }
+#contact { margin-bottom: 60px; }
+
 button:hover,
 .btn:hover {
   background-color: var(--brand-orange-light) !important;
   color: #000 !important;
 }
 
-/* Links */
 a:hover {
   color: var(--brand-orange-light);
 }
-/* ===== About Images Section ===== */
+
+/* ===== ABOUT IMAGES ===== */
 .about-images {
   background: #111;
   border-top: 3px solid var(--brand-orange);
@@ -272,8 +234,74 @@ a:hover {
   box-shadow: 0 0 30px rgba(245, 124, 0, 0.8);
 }
 
+/* MOBILE ABOUT FIX */
+@media (max-width: 768px) {
+  .about-images img {
+    height: 200px;
+  }
+}
 
-  </style>
+/* ===== FOOTER ===== */
+footer {
+  background: #000;
+  color: #fff;
+  padding: 40px 20px;
+}
+
+.footer-content {
+  max-width: 1100px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+  text-align: center;
+}
+
+.footer-content h4 {
+  color: var(--brand-orange);
+  margin-bottom: 10px;
+}
+
+.footer-content a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.footer-content a:hover {
+  color: var(--brand-orange-light);
+}
+
+.footer-icons a {
+  font-size: 28px;
+  margin: 0 10px;
+  color: #fff;
+}
+
+.footer-icons a:hover {
+  color: var(--brand-orange-light);
+}
+
+.footer-bottom {
+  margin-top: 30px;
+  text-align: center;
+  font-size: 14px;
+  border-top: 1px solid #333;
+  padding-top: 15px;
+}
+
+/* ===== MOBILE FOOTER FIX ===== */
+@media (max-width: 768px) {
+  .footer-content {
+    grid-template-columns: 1fr;
+  }
+}
+   .navbar-brand img {
+  max-width: 100%;
+  height: auto;
+  width: 180px;
+  border-radius: 20px; /* ← controls roundness */
+}
+</style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 
 </head>
@@ -286,7 +314,7 @@ a:hover {
 
       <!-- Logo + Name -->
       <a class="navbar-brand d-flex align-items-center" href="#home">
-        <img src="images/dmlogo2.jpg" alt="Logo" style="height:150px; width: 250px; border-radius: 10px;" class="me-2">
+        <img src="images/dmlogo2.jpg" alt="Logo" class="me-2">
         <span class="fw-bold school-name">DM Ajam Driving School</span>
       </a>
 
